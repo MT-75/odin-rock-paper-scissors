@@ -21,7 +21,7 @@ let computerScore = 0;
 
 function playRound (humanChoice, computerChoice) {
     let humanWinText = `${humanChoice} beats ${computerChoice}. Human wins this round!`;
-    let computerWinText = `${computerChoice} beats ${humanChoice}. Computer win this round!`;
+    let computerWinText = `${computerChoice} beats ${humanChoice}. Computer wins this round!`; 
     if(humanChoice === computerChoice) {
         console.log("It's a tie!");
     } else {
