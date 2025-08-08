@@ -15,3 +15,7 @@ function getHumanChoice() {
     humanChoice = humanChoice.slice(0,1).toUpperCase() + humanChoice.slice(1); // Capitalized string. //
     return humanChoice;
 } 
+
+let humanScore = 0;
+let computerScore = 0;
+
