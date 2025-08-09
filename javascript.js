@@ -10,54 +10,69 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let humanChoice = prompt("Chose rock, paper or Scissor");
+    let humanChoice = prompt("Chose Rock, Paper or Scissor");
     humanChoice = humanChoice.toLowerCase(); // With this line the user's input is case insensitive. //
     humanChoice = humanChoice.slice(0,1).toUpperCase() + humanChoice.slice(1); // Capitalized string. //
     return humanChoice;
 } 
 
-let humanScore = 0;
-let computerScore = 0;
 
-function playRound (humanChoice, computerChoice) {
-    let humanWinText = `${humanChoice} beats ${computerChoice}. Human wins this round!`;
-    let computerWinText = `${computerChoice} beats ${humanChoice}. Computer wins this round!`; 
-    if(humanChoice === computerChoice) {
-        console.log("It's a tie!");
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for(let i = 0; i < 5; i++) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+        console.log(`Player Score: ${humanScore} || Computer Score: ${computerScore}`);
+    }
+
+    if(humanScore > computerScore) {
+        console.log("Player wins the game!");
+    } else if (humanScore < computerScore) {
+        console.log("Computer wins the game!");
     } else {
-        switch (humanChoice) {
-            case "Rock":
-                if (computerChoice === "Scissor") {
-                    humanScore += 1;
-                    console.log(humanWinText);
-                } else {
-                    computerScore += 1;
-                    console.log(computerWinText);
-                }
-                break
-            case "Paper":
-                if (computerChoice === "Rock") {
-                    humanScore += 1;
-                    console.log(humanWinText);
-                } else {
-                    computerScore += 1;
-                    console.log(computerWinText);
-                }
-                break
-            case "Scissor":
-                 if (computerChoice === "Paper") {
-                    humanScore += 1;
-                    console.log(humanWinText);
-                } else {
-                    computerScore += 1;
-                    console.log(computerWinText);
-                }
-                break
+        console.log("Tie game!")
+    }
+    
+    function playRound (humanChoice, computerChoice) {
+        let humanWinText = `${humanChoice} beats ${computerChoice}. Player wins this round!`;
+        let computerWinText = `${computerChoice} beats ${humanChoice}. Computer wins this round!`; 
+        if(humanChoice === computerChoice) {
+            console.log("It's a tie!");
+        } else {
+            switch (humanChoice) {
+                case "Rock":
+                    if (computerChoice === "Scissor") {
+                        humanScore += 1;
+                        console.log(humanWinText);
+                    } else {
+                        computerScore += 1;
+                        console.log(computerWinText);
+                    }
+                    break
+                case "Paper":
+                    if (computerChoice === "Rock") {
+                        humanScore += 1;
+                        console.log(humanWinText);
+                    } else {
+                        computerScore += 1;
+                        console.log(computerWinText);
+                    }
+                    break
+                case "Scissor":
+                    if (computerChoice === "Paper") {
+                        humanScore += 1;
+                        console.log(humanWinText);
+                    } else {
+                        computerScore += 1;
+                        console.log(computerWinText);
+                    }
+                    break
+            }
         }
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
